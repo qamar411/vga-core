@@ -1,11 +1,9 @@
-module video_memory #(
-    parameter MEM_INIT_FILE = "output.coe"
-)(
+module video_memory (
     input wire clk_write,                // Write clock
     input wire resetn,
     input wire write_enable,             // Write enable
-    input wire [15:0] write_address,     // Write address (14 bits for 160x120)
-    input wire [15:0] read_address,      // Read address
+    input wire [14:0] write_address,     // Write address (14 bits for 160x120)
+    input wire [14:0] read_address,      // Read address
     input wire [2:0] data_in,            // Pixel data input
     output reg [2:0] data_out            // Pixel data output
 );
@@ -29,6 +27,6 @@ module video_memory #(
    end
    always @(*)
    begin 
-    data_out = ram[read_address];
+        data_out = ram[read_address];
    end
 endmodule
